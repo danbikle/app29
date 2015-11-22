@@ -11,7 +11,7 @@ git clone https://github.com/karpathy/convnetjs.git cnet
 
 cd ~
 git clone https://github.com/danbikle/app29.git
-cd app29
+cd ~/app29
 git checkout -b mybranch
 cat ~/cnet/src/*.js > convnet.js
 ```
@@ -34,5 +34,13 @@ export       PATH="${HOME}/node/bin:${PATH}"
 echo 'export PATH="${HOME}/node/bin:${PATH}"' >> ~/.bashrc
 ```
 
+Next I installed the web server package into my copy of Node.js:
 
-to be continued...
+```bash
+cd ~/app29
+npm install
+```
+
+I did not need to specify the name of the package because the name was already inside package.json which is where npm will look.
+
+
