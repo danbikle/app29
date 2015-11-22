@@ -90,6 +90,11 @@ Available on:
 Hit CTRL-C to stop the server
 ```
 
+Next I asked my browser to load convnet.js by loading this URL:
+
+http://localhost:8080/demo10.html
+
+
 
 
 to be continued...
