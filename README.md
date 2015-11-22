@@ -94,6 +94,16 @@ Next I asked my browser to load convnet.js by loading this URL:
 
 http://localhost:8080/demo10.html
 
+Then, I right-clicked-open the debugger in my browser.
+
+I set a breakpoint at the string: 'bye';
+
+Next, I reloaded the page.
+
+Then, I was able to see the net-object in my debugger-inspector.
+
+Since the net-object did appear and my browser display no JS errors,
+I considered this adequate evidence that I was correctly serving convnet.js to my browser.
 
 
 
