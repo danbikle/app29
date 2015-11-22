@@ -16,5 +16,23 @@ git checkout -b mybranch
 cat ~/cnet/src/*.js > convnet.js
 ```
 
-to be continued...
+I wanted to use a Node.js web server to serve convnet.js to my browser.
 
+I installed Node.js into my home folder like this:
+
+```bash
+cd ~
+rm -rf node
+rm -rf node-v5.0.0-linux-x64
+rm  -f node-v5.0.0-linux-x64.tar.gz
+
+wget https://nodejs.org/dist/v5.0.0/node-v5.0.0-linux-x64.tar.gz
+tar zxf node-v5.0.0-linux-x64.tar.gz
+mv node-v5.0.0-linux-x64 node
+
+export       PATH="${HOME}/node/bin:${PATH}"
+echo 'export PATH="${HOME}/node/bin:${PATH}"' >> ~/.bashrc
+```
+
+
+to be continued...
