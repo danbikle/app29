@@ -13,7 +13,6 @@ cd ~
 git clone https://github.com/danbikle/app29.git
 cd ~/app29
 git checkout -b mybranch
-cat ~/cnet/src/*.js > convnet.js
 ```
 
 I wanted to use a Node.js web server to serve convnet.js to my browser.
