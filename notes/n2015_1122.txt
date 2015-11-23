@@ -14,4 +14,9 @@ Then I right-click Inspect-Element.
 
 In that UI I operate the debugger to see the JS run.
 
+The UI looks like this image:
+
+http://app29.herokuapp.com/db1.png
+
+Dan
 
