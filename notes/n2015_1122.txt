@@ -1,0 +1,17 @@
+~/app29/notes/n2015_1122.txt
+
+I got my first demo to run.
+
+The JavaScript is here:
+
+https://github.com/danbikle/app29/blob/master/demo11.html
+
+To run the JS I load this URL:
+
+http://app29.herokuapp.com/demo11.html
+
+Then I right-click Inspect-Element.
+
+In that UI I operate the debugger to see the JS run.
+
+
