@@ -62,5 +62,48 @@
     %hr/
 
   %li
+    In
+    %a(href='http://cs.stanford.edu/people/karpathy/convnetjs/intro.html' target='x')
+      http://cs.stanford.edu/people/karpathy/convnetjs/intro.html
+    %br/
+    AK shows a pink layer called CONV, what is that?
+  %li
+    A: I am not sure yet, but I suspect that it is related to a number of things:
+    %ul
+      %li The name of his software: ConvNetJS
+      %li An idea/technique/algorithm named: Convolutional Neural Network
+      %li
+        Although I dont know what a CONV object is (yet) I see example syntax for creating one at this URL:
+        %br/
+        %a(href='https://github.com/karpathy/convnetjs/blob/master/Readme.md' target='x')
+          https://github.com/karpathy/convnetjs/blob/master/Readme.md
+        %pre
+          %code 
+            layer_defs.push({type:'conv', sx:5, filters:16, stride:1, pad:2, activation:'relu'});
+            \// the layer will perform convolution with 16 kernels, each of size 5x5.
+            \// the input will be padded with 2 pixels on all sides to make the output Vol of the same size
+            \// output Vol will thus be 32x32x16 at this point
+
+
+
+
+  %li
+    In
+    %a(href='http://cs.stanford.edu/people/karpathy/convnetjs/intro.html' target='x')
+      http://cs.stanford.edu/people/karpathy/convnetjs/intro.html
+    AK shows a grey cube, what is that?
+  %li
+    A: He calls it a 3D array of numbers.
+
+  %li
+    In
+    %a(href='http://cs.stanford.edu/people/karpathy/convnetjs/intro.html' target='x')
+      http://cs.stanford.edu/people/karpathy/convnetjs/intro.html
+    AK shows a blue layer called POOL, what is that?
+  %li
+    A:
+
+
+  %li
   %li
   %li
