@@ -117,6 +117,35 @@
       http://cs.stanford.edu/people/karpathy/convnetjs/docs.html
 
 
+  %li
+    In
+    %a(href='http://cs.stanford.edu/people/karpathy/convnetjs/intro.html' target='x')
+      http://cs.stanford.edu/people/karpathy/convnetjs/intro.html
+    %br/
+    AK shows a yellow layer called SOFTMAX, what is that?
+  %li
+    A: He calls this the 'Loss Layer' and gives short description at this URL:
+    %br/
+    %a(href='http://cs.stanford.edu/people/karpathy/convnetjs/docs.html' target='x')
+      http://cs.stanford.edu/people/karpathy/convnetjs/docs.html
+    %ul
+      %li He lists two types of Loss Layers which correspond to classification:
+      %li softmax
+      %li SVM
+      %li
+        demos:
+        %pre
+          %code
+            layer_defs.push({type:'softmax', num_classes:2});
+            layer_defs.push({type:'svm',     num_classes:2});
+      %li If I am doing regression, I use the string: 'regression'
+      %li The API supports regression of more than 1 output which might be useful if I want to predict more than 1 stock, currency, volatility...
+      %li
+        demo:
+        %pre
+          %code layer_defs.push({type:'regression', num_neurons: 3}); // 3 outputs of regression
+
+
 
   %li
   %li
