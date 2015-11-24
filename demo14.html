@@ -52,26 +52,15 @@
     <script>
       'hello';
       var layer_defs = [];
-
-layer_defs.push({type:'fc', num_neurons:10, activation:'sigmoid'}); // x->1/(1+e^(-x))
-
-      // create net_fc_sigmoid
+      layer_defs.push({type:'fc', num_neurons:10, activation:'sigmoid'}); // x->1/(1+e^(-x))
       var net_fc_sigmoid = new convnetjs.Net();
       net_fc_sigmoid.makeLayers(layer_defs);
-      // create a 1x1x2 volume of input activations:
-      var x = new convnetjs.Vol(1,1,2);
-      x.w[0] = 0.5; // w is the field holding the actual data
-      x.w[1] = -1.3;
-      // a shortcut for the above is var x = new convnetjs.Vol([0.5, -1.3]);
+      var x = new convnetjs.Vol([0.5, -1.3]);
       var scores = net_fc_sigmoid.forward(x); // pass forward through network
-      // scores is now a Vol() of output activations
-      console.log('score for class 0 is assigned:'  + scores.w[0]);
 // To see objects created by this demo, hover mouse over them below:
-layer_defs;
 net_fc_sigmoid;
 x;
 scores;
-scores.w[0];
       'bye'; /* In Chrome debugger, place breakpoint at left of this line by clicking there.
                 Then, type CTRL-r to run the debugger. */
     </script>
