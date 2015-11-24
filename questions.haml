@@ -145,7 +145,7 @@
 
   %li
     %pre
-      %code var v = new convnetjs.Vol(32, 32, 3);
+      %code var v = new convnetjs.Vol(2,2,2);
     Does what?
   %li
     A: Creates a 3D Vol which is filled with random numbers.
@@ -164,6 +164,8 @@
   %li
     What is in the gradients?
   %li
-    A: Initially gradients are set to 0 but they fill with numbers as data flows through the layers.  The gradients contain information which the network 'follows' during learning.
+    A: Initially gradients are set to 0
+    but they fill with numbers as data flows through the layers.
+    The gradients contain information which the network 'follows' during learning.
     %hr/
 

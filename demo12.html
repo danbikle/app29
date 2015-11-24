@@ -43,7 +43,10 @@
     <script>
       'hello';
       // Below, I create a 3D Vol which is filled with random numbers.
-      var v = new convnetjs.Vol(32, 32, 3);
+      var myvol = new convnetjs.Vol(2,2,2);
+      /* I visualize it as 2 arrays each a 2x2.
+      Also myvol should wrap myvol.w which should appear to be an array of 2x2x2 random numbers.
+      And I shoud see myvol.dw which should be 8 zeros. */
       'bye';
     </script>
   </body>
