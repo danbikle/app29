@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>app29/demo14</title>
+
+    <script src="/src/convnet_init.js"></script>
+    <script src="/src/convnet_util.js"></script>
+    <script src="/src/convnet_vol.js"></script>
+    <script src="/src/convnet_vol_util.js"></script>
+    <script src="/src/convnet_layers_dotproducts.js"></script>
+    <script src="/src/convnet_layers_pool.js"></script>
+    <script src="/src/convnet_layers_input.js"></script>
+    <script src="/src/convnet_layers_loss.js"></script>
+    <script src="/src/convnet_layers_nonlinearities.js"></script>
+    <script src="/src/convnet_layers_dropout.js"></script>
+    <script src="/src/convnet_layers_normalization.js"></script>
+    <script src="/src/convnet_net.js"></script>
+    <script src="/src/convnet_trainers.js"></script>
+    <script src="/src/convnet_magicnet.js"></script>
+    <script src="/src/convnet_export.js"></script>
+    <style>
+      body {font-size: 1.2em; line-height: 1.7em; font-weight: bold; font-family: sans-serif;}
+      a, a:visited {color: #0000BB;text-decoration: underline;}
+      a:hover      {color: #BB0000;background-color: #EEEEEE; }
+    </style>
+  </head>
+  <body>
+    <h1>app29/demo14</h1>
+    Refer to:
+    <br />
+    <a href='http://cs.stanford.edu/people/karpathy/convnetjs/intro.html' target='x'>
+      http://cs.stanford.edu/people/karpathy/convnetjs/intro.html
+    </a>
+    <br />
+    <a href='http://cs.stanford.edu/people/karpathy/convnetjs/docs.html' target='x'>
+    http://cs.stanford.edu/people/karpathy/convnetjs/docs.html
+    </a>
+    <br />
+    <a href='https://github.com/karpathy/convnetjs/blob/master/src/convnet_net.js#L104' target='x'>
+    https://github.com/karpathy/convnetjs/blob/master/src/convnet_net.js#L104
+    </a>
+    <br />
+    <img src='/course2.png' />
+    <br />
+    To see the JavaScript in this page, 
+    <br />
+    using Google Chrome (not Firefox), right-click Inspect-Element.
+    <br />
+    To run the JS, reload the page.
+    <br />
+    <script>
+      'hello';
+      var layer_defs = [];
+
+layer_defs.push({type:'fc', num_neurons:10, activation:'sigmoid'}); // x->1/(1+e^(-x))
+
+      // create net_fc_sigmoid
+      var net_fc_sigmoid = new convnetjs.Net();
+      net_fc_sigmoid.makeLayers(layer_defs);
+      // create a 1x1x2 volume of input activations:
+      var x = new convnetjs.Vol(1,1,2);
+      x.w[0] = 0.5; // w is the field holding the actual data
+      x.w[1] = -1.3;
+      // a shortcut for the above is var x = new convnetjs.Vol([0.5, -1.3]);
+      var scores = net_fc_sigmoid.forward(x); // pass forward through network
+      // scores is now a Vol() of output activations
+      console.log('score for class 0 is assigned:'  + scores.w[0]);
+// To see objects created by this demo, hover mouse over them below:
+layer_defs;
+net_fc_sigmoid;
+x;
+scores;
+scores.w[0];
+      'bye'; /* In Chrome debugger, place breakpoint at left of this line by clicking there.
+                Then, type CTRL-r to run the debugger. */
+    </script>
+  </body>
+</html>
