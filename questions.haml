@@ -145,8 +145,6 @@
           %code layer_defs.push({type:'regression', num_neurons: 3}); // 3 outputs of regression
     %hr/
 
-
-
   %li
     %pre
       %code var v = new convnetjs.Vol(32, 32, 3);
@@ -154,6 +152,13 @@
   %li
     A: Creates a 3D Vol which is filled with random numbers.
     %hr/
+
   %li
+    AK claims that a Vol object wraps two 'lists' which he calls:
+    %ul
+      %li volobj.w
+      %li volobj.dw
+    What are the dimensions of volobj.w and volobj.dw?
   %li
+    A: Same as Vol. volobj.w contains the data and volobj.dw contains what AK calls 'gradients'.
     %hr/
