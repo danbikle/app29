@@ -19,7 +19,11 @@
     <script src="/src/convnet_trainers.js"></script>
     <script src="/src/convnet_magicnet.js"></script>
     <script src="/src/convnet_export.js"></script>
-
+    <style>
+      body {font-size: 1.2em; line-height: 1.7em; font-weight: bold; font-family: sans-serif;}
+      a, a:visited {color: #0000BB;text-decoration: underline;}
+      a:hover      {color: #BB0000;background-color: #EEEEEE; }
+    </style>
   </head>
   <body>
     <h1>app29/demo11</h1>
@@ -33,9 +37,19 @@
       http://cs.stanford.edu/people/karpathy/convnetjs/intro.html
     </a>
     <br />
+    <a href='http://cs.stanford.edu/people/karpathy/convnetjs/docs.html' target='x'>
+    http://cs.stanford.edu/people/karpathy/convnetjs/docs.html
+    </a>
+    <br />
+    <a href='https://github.com/karpathy/convnetjs/blob/master/src/convnet_vol.js' target='x'>
+    https://github.com/karpathy/convnetjs/blob/master/src/convnet_vol.js
+    </a>
+    <br />
     <img src='/course2.png' />
     <br />
-    To see the JavaScript in this page, right-click Inspect-Element.
+    To see the JavaScript in this page, 
+    <br />
+    using Google Chrome (not Firefox), right-click Inspect-Element.
     <br />
     To run the JS, reload the page.
     <br />
@@ -73,7 +87,16 @@
       // weights have been adjusted by the Trainer to give a higher probability to
       // the class we trained the network with (zero)
 
-      'bye';
+// To see objects created by this demo, hover mouse over them below:
+layer_defs;
+net;
+x;
+prob;
+trainer;
+prob2;
+
+      'bye'; /* In Chrome debugger, place breakpoint at left of this line by clicking there.
+                Then, type CTRL-r to run the debugger. */
     </script>
   </body>
 </html>
