@@ -19,11 +19,19 @@
     <script src="/src/convnet_trainers.js"></script>
     <script src="/src/convnet_magicnet.js"></script>
     <script src="/src/convnet_export.js"></script>
-
+    <style>
+      body {font-size: 1.2em; line-height: 1.7em; font-weight: bold; font-family: sans-serif;}
+      a, a:visited {color: #0000BB;text-decoration: underline;}
+      a:hover      {color: #BB0000;background-color: #EEEEEE; }
+    </style>
   </head>
   <body>
     <h1>app29/demo12</h1>
     Refer to:
+    <br />
+    <a href='http://cs.stanford.edu/people/karpathy/convnetjs/intro.html' target='x'>
+      http://cs.stanford.edu/people/karpathy/convnetjs/intro.html
+    </a>
     <br />
     <a href='http://cs.stanford.edu/people/karpathy/convnetjs/docs.html' target='x'>
     http://cs.stanford.edu/people/karpathy/convnetjs/docs.html
@@ -35,7 +43,9 @@
     <br />
     <img src='/course2.png' />
     <br />
-    To see the JavaScript in this page, right-click Inspect-Element.
+    To see the JavaScript in this page, 
+    <br />
+    using Google Chrome (not Firefox), right-click Inspect-Element.
     <br />
     To run the JS, reload the page.
     <br />
@@ -46,8 +56,14 @@
       var myvol = new convnetjs.Vol(2,2,2);
       /* I visualize it as 2 arrays each a 2x2.
       Also myvol should wrap myvol.w which should appear to be an array of 2x2x2 random numbers.
-      And I shoud see myvol.dw which should be 8 zeros. */
-      'bye';
+      And I shoud see myvol.dw which should be 8 zeros.  */
+      var myw  = myvol.w;  // Chrome displays this as a 1D array of numbers.
+      var mydw = myvol.dw; // Chrome displays this as a 1D array of 0s.
+      myvol;  // hover mouse left of here.
+      myw;    // hover mouse left of here.
+      mydw;   // hover mouse left of here.
+      'bye'; /* In Chrome debugger, place breakpoint at left of this line by clicking there.
+                Then, type CTRL-r to run the debugger. */
     </script>
   </body>
 </html>
