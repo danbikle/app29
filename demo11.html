@@ -19,11 +19,9 @@
     <script src="/src/convnet_trainers.js"></script>
     <script src="/src/convnet_magicnet.js"></script>
     <script src="/src/convnet_export.js"></script>
-    <style>
-      body {font-size: 1.2em; line-height: 1.7em; font-weight: bold; font-family: sans-serif;}
-      a, a:visited {color: #0000BB;text-decoration: underline;}
-      a:hover      {color: #BB0000;background-color: #EEEEEE; }
-    </style>
+    <script src="/jquery.min.js"></script>
+    <script src="/codeshow.js"></script>
+    <link href="/css4demos.css" media="all" rel="stylesheet" />
   </head>
   <body>
     <h1>app29/demo11</h1>
@@ -53,13 +51,17 @@
     <br />
     To run the JS, reload the page.
     <br />
-    <script>
+    Also, I use jQuery to expose the JavaScript below:
+    <br />
+    <div class='div4code'><pre><code id='txt'></code></pre></div>
+    <script id='cnet'>
       'hello';
       // specifies a 2-layer neural network with one hidden layer of 20 neurons
       var layer_defs = [];
       // input layer declares size of input. here: 2-D data
-      // ConvNetJS works on 3-Dimensional volumes (sx, sy, depth), but if you're not dealing with images
-      // then the first two dimensions (sx, sy) will always be kept at size 1
+      /* ConvNetJS works on 3-Dimensional volumes (sx, sy, depth), 
+         but if you're not dealing with images
+         then the first two dimensions (sx, sy) will always be kept at size 1*/
 
       layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:2});
       // declare 20 neurons, followed by ReLU (rectified linear unit non-linearity)
@@ -74,7 +76,9 @@
       var x = new convnetjs.Vol([0.3, -0.5]);
       var prob = net.forward(x); 
 
-      // prob is a Vol. Vols have a field .w that stores the raw data, and .dw that stores gradients
+      /* prob is a Vol. 
+         Vols have a field .w that stores the raw data, 
+         and .dw that stores gradients */
       console.log('probability that x is class 0: ' + prob.w[0]); // prints 0.50101
       
       var trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01, l2_decay:0.001});
@@ -85,13 +89,13 @@
       // now prints 0.50374, slightly higher than previous 0.50101: the networks
       // weights have been adjusted by the Trainer to give a higher probability to
       // the class we trained the network with (zero)
-// To see objects created by this demo, hover mouse over them below:
-layer_defs;
-net;
-x;
-prob;
-trainer;
-prob2;
+      // To see objects created by this demo, hover mouse over them below:
+      layer_defs;
+      net;
+      x;
+      prob;
+      trainer;
+      prob2;
       'bye'; /* In Chrome debugger, place breakpoint at left of this line by clicking there.
                 Then, type CTRL-r to run the debugger. */
     </script>
