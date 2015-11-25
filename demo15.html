@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>app29/demo14</title>
+    <title>app29/demo15</title>
 
     <script src="/src/convnet_init.js"></script>
     <script src="/src/convnet_util.js"></script>
@@ -24,7 +24,7 @@
     <link href="/css4demos.css" media="all" rel="stylesheet" />
   </head>
   <body>
-    <h1>app29/demo14</h1>
+    <h1>app29/demo15</h1>
     Refer to:
     <br />
     <a href='http://cs.stanford.edu/people/karpathy/convnetjs/intro.html' target='x'>
@@ -56,17 +56,17 @@
       var layer_defs = [];
 
       layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:2});
-      layer_defs.push({type:'fc', num_neurons:10, activation:'sigmoid'});
-      // sigmoid of x is 1/(1+e^(-x))
+      layer_defs.push({type:'fc', num_neurons:10, activation:'tanh'});
+      // tanh of x is tanh(x)
       layer_defs.push({type:'svm', num_classes:2});
 
-      var net_fc_sigmoid = new convnetjs.Net();
-      net_fc_sigmoid.makeLayers(layer_defs);
+      var net_fc_tanh = new convnetjs.Net();
+      net_fc_tanh.makeLayers(layer_defs);
 
-      var scores = net_fc_sigmoid.forward(x); // pass forward through network
+      var scores = net_fc_tanh.forward(x); // pass forward through network
 
       // To see objects created by this demo, hover mouse over them below:
-      net_fc_sigmoid;
+      net_fc_tanh;
       x;
       scores;
       'bye'; /* In Chrome debugger, 
