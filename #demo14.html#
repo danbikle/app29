@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>app29/demo17</title>
+    <title>app29/demo14</title>
 
     <script src="/src/convnet_init.js"></script>
     <script src="/src/convnet_util.js"></script>
@@ -24,7 +24,7 @@
     <link href="/css4demos.css" media="all" rel="stylesheet" />
   </head>
   <body>
-    <h1>app29/demo17</h1>
+    <h1>app29/demo14</h1>
     Refer to:
     <br />
     <a href='http://cs.stanford.edu/people/karpathy/convnetjs/intro.html' target='x'>
@@ -32,15 +32,15 @@
     </a>
     <br />
     <a href='http://cs.stanford.edu/people/karpathy/convnetjs/docs.html' target='x'>
-    http://cs.stanford.edu/people/karpathy/convnetjs/docs.html
+      http://cs.stanford.edu/people/karpathy/convnetjs/docs.html
     </a>
     <br />
     <a href='https://github.com/karpathy/convnetjs/blob/master/src/convnet_net.js#L15' target='x'>
-    https://github.com/karpathy/convnetjs/blob/master/src/convnet_net.js#L15
+      https://github.com/karpathy/convnetjs/blob/master/src/convnet_net.js#L15
     </a>
     <br />
-    <a href='https://github.com/karpathy/convnetjs/search?q=Maxout' target='x'>
-      https://github.com/karpathy/convnetjs/search?q=Maxout
+    <a href='https://github.com/karpathy/convnetjs/search?q=Sigmoid' target='x'>
+      https://github.com/karpathy/convnetjs/search?q=Sigmoid
     </a>
     <br />
     <img src='/course2.png' />
@@ -60,23 +60,17 @@
       var layer_defs = [];
 
       layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:2});
-
-      // specify group size in maxout. num_neurons must be divisible by group_size.
-      // here, output will be 3 neurons only (3 = 12/4)
-      layer_defs.push({type:'fc', num_neurons:12, group_size: 4, activation:'maxout'});
-      /* Perhaps it is acting like a funnel.
-      It takes 12 inputs separates them into groups where each group has group_size: 4.
-      Each group is funneled into 1 output. So then, I have 3 outputs. */
-
+      layer_defs.push({type:'fc', num_neurons:10, activation:'sigmoid'});
+      // sigmoid of x is 1/(1+e^(-x))
       layer_defs.push({type:'svm', num_classes:2});
 
-      var net_fc_maxout = new convnetjs.Net();
-      net_fc_maxout.makeLayers(layer_defs);
+      var net_fc_sigmoid = new convnetjs.Net();
+      net_fc_sigmoid.makeLayers(layer_defs);
 
-      var scores = net_fc_maxout.forward(x); // pass forward through network
+      var scores = net_fc_sigmoid.forward(x); // pass forward through network
 
       // To see objects created by this demo, hover mouse over them below:
-      net_fc_maxout;
+      net_fc_sigmoid;
       x;
       scores;
       'bye'; /* In Chrome debugger, 
