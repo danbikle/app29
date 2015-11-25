@@ -19,11 +19,9 @@
     <script src="/src/convnet_trainers.js"></script>
     <script src="/src/convnet_magicnet.js"></script>
     <script src="/src/convnet_export.js"></script>
-    <style>
-      body {font-size: 1.2em; line-height: 1.7em; font-weight: bold; font-family: sans-serif;}
-      a, a:visited {color: #0000BB;text-decoration: underline;}
-      a:hover      {color: #BB0000;background-color: #EEEEEE; }
-    </style>
+    <script src="/jquery.min.js"></script>
+    <script src="/codeshow.js"></script>
+    <link href="/css4demos.css" media="all" rel="stylesheet" />
   </head>
   <body>
     <h1>app29/demo13</h1>
@@ -49,7 +47,9 @@
     <br />
     To run the JS, reload the page.
     <br />
-    <script>
+    Also, I use jQuery to expose the JavaScript below:
+    <div id='show_mycode'></div>
+    <script id='mycode'>
       'hello';
       var layer_defs = [];
       // minimal network: a simple binary SVM classifer in 2-dimensional space
@@ -66,12 +66,12 @@
       var scores = net.forward(x); // pass forward through network
       // scores is now a Vol() of output activations
       console.log('score for class 0 is assigned:'  + scores.w[0]);
-// To see objects created by this demo, hover mouse over them below:
-layer_defs;
-net;
-x;
-scores;
-scores.w[0];
+      // To see objects created by this demo, hover mouse over them below:
+      layer_defs;
+      net;
+      x;
+      scores;
+      scores.w[0];
       'bye'; /* In Chrome debugger, place breakpoint at left of this line by clicking there.
                 Then, type CTRL-r to run the debugger. */
     </script>
