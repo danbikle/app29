@@ -1,7 +1,8 @@
-/* codeshow.js */
+/* codeshow.js 
+   Copies from mycode into show_mycode. */
 jQuery(function(){
-  mytxt     = $('script#cnet').html();
-  div4mytxt = $('#txt');
-  div4mytxt.append(mytxt);
+  mytxt     = $('script#mycode').html();
+  div4mytxt = $('#show_mycode');
+  div4mytxt.append('<pre><code>'+mytxt+'</code></pre>');
 });
 
