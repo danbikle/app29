@@ -24,7 +24,7 @@
     <link href="/css4demos.css" media="all" rel="stylesheet" />
   </head>
   <body>
-    <h1>app29/demo17</h1>
+    <h1>app29/demo17 (maxout, group_size, funnel, mixer)</h1>
     Refer to:
     <br />
     <a href='http://cs.stanford.edu/people/karpathy/convnetjs/intro.html' target='x'>
@@ -41,6 +41,14 @@
     <br />
     <a href='https://github.com/karpathy/convnetjs/search?q=Maxout' target='x'>
       https://github.com/karpathy/convnetjs/search?q=Maxout
+    </a>
+    <br />
+    <a href='https://en.wikipedia.org/wiki/Electronic_mixer' target='x'>
+    https://en.wikipedia.org/wiki/Electronic_mixer
+    </a>
+    <br />
+    <a href='https://en.wikipedia.org/wiki/Multiplexer' target='x'>
+    https://en.wikipedia.org/wiki/Multiplexer
     </a>
     <br />
     <img src='/course2.png' />
@@ -66,7 +74,11 @@
       layer_defs.push({type:'fc', num_neurons:12, group_size: 4, activation:'maxout'});
       /* Perhaps it is acting like a funnel.
       It takes 12 inputs separates them into groups where each group has group_size: 4.
-      Each group is funneled into 1 output. So then, I have 3 outputs. */
+      Each group is funneled into 1 output. So then, I have 3 outputs. 
+      Electronics offers the idea of a 'mixer' which has behavior like this.
+      Also electronics has a 'multiplexer' which is a selector of several inputs 
+      rather than a mixer.
+      */
 
       layer_defs.push({type:'svm', num_classes:2});
 

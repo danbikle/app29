@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>app29/demo16</title>
+    <title>app29/demo19</title>
 
     <script src="/src/convnet_init.js"></script>
     <script src="/src/convnet_util.js"></script>
@@ -24,7 +24,7 @@
     <link href="/css4demos.css" media="all" rel="stylesheet" />
   </head>
   <body>
-    <h1>app29/demo16</h1>
+    <h1>app29/demo19 (softmax)</h1>
     Refer to:
     <br />
     <a href='http://cs.stanford.edu/people/karpathy/convnetjs/intro.html' target='x'>
@@ -39,8 +39,8 @@
     https://github.com/karpathy/convnetjs/blob/master/src/convnet_net.js#L15
     </a>
     <br />
-    <a href='https://github.com/karpathy/convnetjs/search?q=ReLU' target='x'>
-      https://github.com/karpathy/convnetjs/search?q=ReLU
+    <a href='https://github.com/karpathy/convnetjs/search?q=softmax' target='x'>
+      https://github.com/karpathy/convnetjs/search?q=softmax
     </a>
     <br />
     <img src='/course2.png' />
@@ -61,22 +61,15 @@
 
       layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:2});
 
-      layer_defs.push({type:'fc', num_neurons:10, activation:'relu'});
-      /*relu refers to term: rectified linear units.
-      relu of x is max(0,x)
-      If you know simple electronics, a thing called a rectifier
-      behaves like this.
-      I use a rectifier if I want current to flow in only one direction.*/
-  
-      layer_defs.push({type:'svm', num_classes:2});
+      layer_defs.push({type:'softmax', num_classes:2});
 
-      var net_fc_relu = new convnetjs.Net();
-      net_fc_relu.makeLayers(layer_defs);
+      var net_fc_softmax = new convnetjs.Net();
+      net_fc_softmax.makeLayers(layer_defs);
 
-      var scores = net_fc_relu.forward(x); // pass forward through network
+      var scores = net_fc_softmax.forward(x); // pass forward through network
 
       // To see objects created by this demo, hover mouse over them below:
-      net_fc_relu;
+      net_fc_softmax;
       x;
       scores;
       'bye'; /* In Chrome debugger, 
