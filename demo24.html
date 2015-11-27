@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>app29/demo23</title>
+    <title>app29/demo24</title>
 
     <script src="/src/convnet_init.js"></script>
     <script src="/src/convnet_util.js"></script>
@@ -24,7 +24,7 @@
     <link href="/css4demos.css" media="all" rel="stylesheet" />
   </head>
   <body>
-    <h1>app29/demo23 (AdaDelta Trainer)</h1>
+    <h1>app29/demo24 (AdaGrad Trainer)</h1>
     Refer to:
     <br />
     <a href='http://cs.stanford.edu/people/karpathy/convnetjs/intro.html' target='x'>
@@ -35,20 +35,16 @@
       http://cs.stanford.edu/people/karpathy/convnetjs/docs.html
     </a>
     <br />
-    <a href='https://github.com/karpathy/convnetjs/search?q=adadelta' target='x'>
-      https://github.com/karpathy/convnetjs/search?q=adadelta
+    <a href='https://github.com/karpathy/convnetjs/search?q=adagrad' target='x'>
+      https://github.com/karpathy/convnetjs/search?q=adagrad
     </a>
     <br />
     <a href='https://github.com/karpathy/convnetjs/search?q=trainer' target='x'>
       https://github.com/karpathy/convnetjs/search?q=trainer
     </a>
     <br />
-    <a href='http://www.google.com/search?q=Machine+Learning+AdaDelta' target='x'>
-      http://www.google.com/search?q=Machine+Learning+AdaDelta
-    </a>
-    <br />
-    <a href='http://www.matthewzeiler.com/pubs/googleTR2012/googleTR2012.pdf' target='x'>
-      http://www.matthewzeiler.com/pubs/googleTR2012/googleTR2012.pdf
+    <a href='http://www.google.com/search?q=Machine+Learning+AdaGrad' target='x'>
+      http://www.google.com/search?q=Machine+Learning+AdaGrad
     </a>
     <br />
     <img src='/course2.png' />
@@ -68,13 +64,14 @@
       layer_defs.push({type:'regression', num_neurons: 1});
       var mynet      = new convnetjs.Net();
       mynet.makeLayers(layer_defs);
-      // example that uses adadelta. Reasonable for beginners.
-      var adadelta_trainer = new convnetjs.Trainer(mynet, {method: 'adadelta', 
-                                                         l2_decay: 0.001,
-                                                         batch_size: 10});
+      // example adagrad.
+      var adagrad_trainer = new convnetjs.Trainer(mynet, {method: 'adagrad', 
+                                                l2_decay: 0.001, 
+                                                l1_decay: 0.001, 
+                                                batch_size: 10});
 
       // Use debugger to inspect trainer object below:
-      adadelta_trainer;
+      adagrad_trainer;
       'bye'; /* In Chrome debugger, place breakpoint at left of this line by clicking there.
                 Then, type CTRL-r to run the debugger. */
     </script>
