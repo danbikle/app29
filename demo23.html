@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>app29/demo23</title>
+
+    <script src="/src/convnet_init.js"></script>
+    <script src="/src/convnet_util.js"></script>
+    <script src="/src/convnet_vol.js"></script>
+    <script src="/src/convnet_vol_util.js"></script>
+    <script src="/src/convnet_layers_dotproducts.js"></script>
+    <script src="/src/convnet_layers_pool.js"></script>
+    <script src="/src/convnet_layers_input.js"></script>
+    <script src="/src/convnet_layers_loss.js"></script>
+    <script src="/src/convnet_layers_nonlinearities.js"></script>
+    <script src="/src/convnet_layers_dropout.js"></script>
+    <script src="/src/convnet_layers_normalization.js"></script>
+    <script src="/src/convnet_net.js"></script>
+    <script src="/src/convnet_trainers.js"></script>
+    <script src="/src/convnet_magicnet.js"></script>
+    <script src="/src/convnet_export.js"></script>
+    <script src="/jquery.min.js"></script>
+    <script src="/codeshow.js"></script>
+    <link href="/css4demos.css" media="all" rel="stylesheet" />
+  </head>
+  <body>
+    <h1>app29/demo23 (Adadelta Trainer)</h1>
+    Refer to:
+    <br />
+    <a href='http://cs.stanford.edu/people/karpathy/convnetjs/intro.html' target='x'>
+      http://cs.stanford.edu/people/karpathy/convnetjs/intro.html
+    </a>
+    <br />
+    <a href='http://cs.stanford.edu/people/karpathy/convnetjs/docs.html' target='x'>
+      http://cs.stanford.edu/people/karpathy/convnetjs/docs.html
+    </a>
+    <br />
+    <a href='https://github.com/karpathy/convnetjs/search?q=adadelta' target='x'>
+      https://github.com/karpathy/convnetjs/search?q=adadelta
+    </a>
+    <br />
+    <a href='https://github.com/karpathy/convnetjs/search?q=trainer' target='x'>
+      https://github.com/karpathy/convnetjs/search?q=trainer
+    </a>
+    <br />
+    <a href='http://www.google.com/search?q=Machine+Learning+AdaDelta' target='x'>
+      http://www.google.com/search?q=Machine+Learning+AdaDelta
+    </a>
+    <br />
+    <img src='/course2.png' />
+    <br />
+    To see the JavaScript in this page, 
+    <br />
+    using Google Chrome (not Firefox), right-click Inspect-Element.
+    <br />
+    To run the JS, reload the page.
+    <br />
+    Also, I use jQuery to expose the JavaScript below:
+    <div id='show_mycode'></div>
+    <script id='mycode'>
+      'hello';
+      var layer_defs = [];
+      layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:2});
+      layer_defs.push({type:'regression', num_neurons: 1});
+      var mynet      = new convnetjs.Net();
+      mynet.makeLayers(layer_defs);
+      // example that uses adadelta. Reasonable for beginners.
+      var adadelta_trainer = new convnetjs.Trainer(mynet, {method: 'adadelta', 
+                                                         l2_decay: 0.001,
+                                                         batch_size: 10});
+
+      // Use debugger to inspect trainer object below:
+      adadelta_trainer;
+      'bye'; /* In Chrome debugger, place breakpoint at left of this line by clicking there.
+                Then, type CTRL-r to run the debugger. */
+    </script>
+  </body>
+</html>
