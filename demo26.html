@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>app29/demo25</title>
+    <title>app29/demo26</title>
 
     <script src="/src/convnet_init.js"></script>
     <script src="/src/convnet_util.js"></script>
@@ -24,7 +24,7 @@
     <link href="/css4demos.css" media="all" rel="stylesheet" />
   </head>
   <body>
-    <h1>app29/demo25 (Trainer Demo - SVM, AdaDelta)</h1>
+    <h1>app29/demo26 (Trainer Demo - 1 Output Regression, AdaDelta)</h1>
     Refer to:
     <br />
     <a href='http://cs.stanford.edu/people/karpathy/convnetjs/intro.html' target='x'>
@@ -67,7 +67,7 @@
       
       var layer_defs = [];
       layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:2});
-      layer_defs.push({type:'svm', num_classes: 5});
+      layer_defs.push({type:'regression', num_neurons: 1});
       
       var mynet            = new convnetjs.Net();
       mynet.makeLayers(layer_defs);
@@ -75,9 +75,9 @@
                                                            l2_decay: 0.001,
                                                            batch_size: 10});
       // if your loss on top is
-      // layer_defs.push({type:'svm', num_classes: 5});
-      // use something like... (lets say x is class 3)
-      var stats = adadelta_trainer.train(x, 3);
+      // layer_defs.push({type:'regression', num_neurons: 1});
+      // use something like... (note the LIST!)
+      var stats = adadelta_trainer.train(x, [0.7]);
       stats;
 
       'bye'; /* In Chrome debugger, place breakpoint at left of this line by clicking there.
