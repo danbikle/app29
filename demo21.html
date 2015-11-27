@@ -40,23 +40,23 @@
     </a>
     <br />
     <a href='https://github.com/karpathy/convnetjs/search?q=regression' target='x'>
-    https://github.com/karpathy/convnetjs/search?q=regression
+      https://github.com/karpathy/convnetjs/search?q=regression
     </a>
+    <br />
+    <a href='https://github.com/karpathy/convnetjs/blob/master/src/convnet_layers_loss.js#L93' target='x'>
+      https://github.com/karpathy/convnetjs/blob/master/src/convnet_layers_loss.js#L93
     </a>
     <br />
     <a href='http://www.google.com/search?tbm=isch&q=machine+learning+regression' target='x'>
-    http://www.google.com/search?tbm=isch&q=machine+learning+regression
-    </a>
+      http://www.google.com/search?tbm=isch&q=machine+learning+regression
     </a>
     <br />
     <a href='http://www.google.com/search?tbm=vid&q=machine+learning+l2+regression' target='x'>
-    http://www.google.com/search?tbm=vid&q=machine+learning+l2+regression
-    </a>
+      http://www.google.com/search?tbm=vid&q=machine+learning+l2+regression
     </a>
     <br />
     <a href='http://www.google.com/search?tbm=isch&q=machine+learning+regression+vs+classification' target='x'>
-    http://www.google.com/search?tbm=isch&q=machine+learning+regression+vs+classification
-    </a>
+      http://www.google.com/search?tbm=isch&q=machine+learning+regression+vs+classification
     </a>
     <br />
     <img src='/course2.png' />
@@ -77,8 +77,8 @@
 
       layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:2});
 
-// train 3 real-valued outputs
-layer_defs.push({type:'regression', num_neurons: 3});
+      // train 3 real-valued outputs
+      layer_defs.push({type:'regression', num_neurons: 3});
 
       var net_fc_regression = new convnetjs.Net();
       net_fc_regression.makeLayers(layer_defs);
