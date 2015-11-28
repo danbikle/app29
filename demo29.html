@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>app29/demo28</title>
+    <title>app29/demo29</title>
 
     <script src="/src/convnet_init.js"></script>
     <script src="/src/convnet_util.js"></script>
@@ -24,7 +24,7 @@
     <link href="/css4demos.css" media="all" rel="stylesheet" />
   </head>
   <body>
-    <h1>app29/demo28 (SGDTrainer Loop Demo)</h1>
+    <h1>app29/demo29 (MagicNet Demo)</h1>
     Refer to:
     <br />
     <a href='http://cs.stanford.edu/people/karpathy/convnetjs/intro.html' target='x'>
@@ -35,9 +35,9 @@
       http://cs.stanford.edu/people/karpathy/convnetjs/docs.html
     </a>
     <br />
-    <a href='https://github.com/karpathy/convnetjs/search?q=train' target='x'>
-      https://github.com/karpathy/convnetjs/search?q=train
-    </a>
+https://github.com/karpathy/convnetjs/search?q=MagicNet
+    <br />
+
     <br />
     <img src='/course2.png' />
     <br />
@@ -52,35 +52,25 @@
     <script id='mycode'>
       'hello';
 
-      /* Here is a more realistic example of a training loop: */
-      var layer_defs = [];
-      layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:2});
-      
-      layer_defs.push({type:'svm', num_classes: 2});
-      var mynet            = new convnetjs.Net();
-      mynet.makeLayers(layer_defs);
-      var trainer = new convnetjs.SGDTrainer(mynet, {learning_rate:0.01, 
-                  momentum:0.9, batch_size:16, l2_decay:0.001});
-      var my_data = [
-        [-1.1, - 2.2 ],
-        [1.1,    2.2 ],
-        [-1.11, -2.22],
-        [1.11,   2.22]
-      ];
-      var my_labels = [
-         1.0,
-        -1.0,
-         1.1,
-        -1.1
-      ];
-      
-      for(var i=0;i<my_data.length;i++) {
-        var x = new convnetjs.Vol(1,1,2,0.0); // a 1x1x2 volume initialized to 0's.
-        x.w[0] = my_data[i][0]; // Vol.w is just a list, it holds your data
-        x.w[1] = my_data[i][1];
-        trainer.train(x, my_labels[i]);
-        trainer;
-      }
+var opts = {}; // options struct
+opts.train_ratio = 0.7; // what portion of data goes to train, in train/validation fold splits. Here, 70%
+opts.num_folds = 1; // number of folds to evaluate per candidate
+opts.num_candidates = 50; // number of candidates to evaluate in parallel
+opts.num_epochs = 20; // number of epochs to make through data per fold
+opts.ensemble_size = 20; // how many nets to average in the end for prediction? likely higher = better but slower
+ 
+var magicNet = new convnetjs.MagicNet(train_data, train_labels, opts);
+magicNet.onFinishBatch(finishedBatch); // example of setting callback for events
+ 
+// start training MagicNet. Every call trains all candidates in current batch on one example
+setInterval(function(){ magicNet.step(); }, 0});
+ 
+function finishedBatch() {
+  // prediction example. xout is Vol of scores
+  // there is also predict_soft(), which returns the full score volume for all labels
+  var predicted_label = magicNet.predict(some_test_vol);
+}
+
       'bye'; /* In Chrome debugger, place breakpoint at left of this line by clicking there.
                 Then, type CTRL-r to run the debugger. */
     </script>
