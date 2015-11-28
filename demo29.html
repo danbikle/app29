@@ -40,6 +40,10 @@
       https://github.com/karpathy/convnetjs/search?q=MagicNet
     </a>
     <br />
+    <a href='https://github.com/karpathy/convnetjs/blob/master/src/convnet_magicnet.js' target='x'>
+      https://github.com/karpathy/convnetjs/blob/master/src/convnet_magicnet.js
+    </a>
+    <br />
     <a href='http://www.google.com/search?q=In+Machine+Learning+what+is+a+fold' target='x'>
       http://www.google.com/search?q=In+Machine+Learning+what+is+a+fold
     </a>
@@ -86,16 +90,15 @@ opts.num_epochs = 20;
 likely higher = better but slower: */
 opts.ensemble_size = 20; 
 
-var data_length = train_data_a.length;
-var train_data  = new convnetjs.Vol(1,4,data_length,0.0);
-var kntr = 0;
-for(var   i=0;i<data_length;i++) {
-  for(var j=0;j<4;          j++) {
-    train_data.w[kntr] = train_data_a[i][j];
-    kntr += 1;
-  }
+var train_data  = [];
+train_data_a.forEach(function(flower){
+  var flower_v = new convnetjs.Vol(1,1,4,0.0);
+  flower_v.w[0] = flower[0];
+  flower_v.w[1] = flower[1];
+  flower_v.w[2] = flower[2];
+  flower_v.w[3] = flower[3];
+  train_data.push(flower_v);
   train_data;
-  train_data_a;
 }
 
 var train_labels = [];
@@ -103,6 +106,10 @@ train_labels_a.forEach(function(label){
   label;
   if (label == 'Iris-setosa')
     train_labels.push(0);
+  if (label == 'Iris-versicolor')
+    train_labels.push(1);
+  if (label == 'Iris-virginica')
+    train_labels.push(2);
   }
 );
 
