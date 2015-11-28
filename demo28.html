@@ -56,13 +56,29 @@
     <script id='mycode'>
       'hello';
 
-      /* The returned object stats contains the cost 
-      (which you want to be decrease over time as you train, that is good). 
-      It also returns other things such as the time to propagate forward and backwards. 
-      Here is a last, little more realistic example of a training loop: */
+      /* Here is a more realistic example of a training loop: */
+var layer_defs = [];
+layer_defs.push({type:'input', out_sx:1, out_sy:1, out_depth:2});
 
-var trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01, 
+layer_defs.push({type:'svm', num_classes: 2});
+var mynet            = new convnetjs.Net();
+mynet.makeLayers(layer_defs);
+var trainer = new convnetjs.SGDTrainer(mynet, {learning_rate:0.01, 
                   momentum:0.9, batch_size:16, l2_decay:0.001});
+
+var mydata = [
+  [-1.1, - 2.2 ],
+  [1.1,    2.2 ],
+  [-1.11, -2.22],
+  [1.11,   2.22]
+];
+var my_labels = [
+   1.0,
+  -1.0,
+   1.1,
+  -1.1
+];
+
 /*
 for(var i=0;i<my_data.length;i++) {
   var x = new convnetjs.Vol(1,1,2,0.0); // a 1x1x2 volume initialized to 0's.
