@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>app29/demo28</title>
+
+    <script src="/src/convnet_init.js"></script>
+    <script src="/src/convnet_util.js"></script>
+    <script src="/src/convnet_vol.js"></script>
+    <script src="/src/convnet_vol_util.js"></script>
+    <script src="/src/convnet_layers_dotproducts.js"></script>
+    <script src="/src/convnet_layers_pool.js"></script>
+    <script src="/src/convnet_layers_input.js"></script>
+    <script src="/src/convnet_layers_loss.js"></script>
+    <script src="/src/convnet_layers_nonlinearities.js"></script>
+    <script src="/src/convnet_layers_dropout.js"></script>
+    <script src="/src/convnet_layers_normalization.js"></script>
+    <script src="/src/convnet_net.js"></script>
+    <script src="/src/convnet_trainers.js"></script>
+    <script src="/src/convnet_magicnet.js"></script>
+    <script src="/src/convnet_export.js"></script>
+    <script src="/jquery.min.js"></script>
+    <script src="/codeshow.js"></script>
+    <link href="/css4demos.css" media="all" rel="stylesheet" />
+  </head>
+  <body>
+    <h1>app29/demo28 (Trainer Demo, AdaDelta Train Loop)</h1>
+    Refer to:
+    <br />
+    <a href='http://cs.stanford.edu/people/karpathy/convnetjs/intro.html' target='x'>
+      http://cs.stanford.edu/people/karpathy/convnetjs/intro.html
+    </a>
+    <br />
+    <a href='http://cs.stanford.edu/people/karpathy/convnetjs/docs.html' target='x'>
+      http://cs.stanford.edu/people/karpathy/convnetjs/docs.html
+    </a>
+    <br />
+    <a href='https://github.com/karpathy/convnetjs/search?q=train' target='x'>
+      https://github.com/karpathy/convnetjs/search?q=train
+    </a>
+    <br />
+
+    <br />
+
+    <br />
+    <img src='/course2.png' />
+    <br />
+    To see the JavaScript in this page, 
+    <br />
+    using Google Chrome (not Firefox), right-click Inspect-Element.
+    <br />
+    To run the JS, reload the page.
+    <br />
+    Also, I use jQuery to expose the JavaScript below:
+    <div id='show_mycode'></div>
+    <script id='mycode'>
+      'hello';
+
+      /* The returned object stats contains the cost 
+      (which you want to be decrease over time as you train, that is good). 
+      It also returns other things such as the time to propagate forward and backwards. 
+      Here is a last, little more realistic example of a training loop: */
+
+var trainer = new convnetjs.SGDTrainer(net, {learning_rate:0.01, 
+                  momentum:0.9, batch_size:16, l2_decay:0.001});
+/*
+for(var i=0;i<my_data.length;i++) {
+  var x = new convnetjs.Vol(1,1,2,0.0); // a 1x1x2 volume initialized to 0's.
+  x.w[0] = my_data[i][0]; // Vol.w is just a list, it holds your data
+  x.w[1] = my_data[i][1];
+  trainer.train(x, my_labels[i]);
+}
+*/
+      'bye'; /* In Chrome debugger, place breakpoint at left of this line by clicking there.
+                Then, type CTRL-r to run the debugger. */
+    </script>
+  </body>
+</html>
