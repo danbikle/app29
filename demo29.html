@@ -21,6 +21,7 @@
     <script src="/src/convnet_export.js"></script>
     <script src="/jquery.min.js"></script>
     <script src="/codeshow.js"></script>
+    <script src="/demo29data.js"></script>
     <link href="/css4demos.css" media="all" rel="stylesheet" />
   </head>
   <body>
@@ -84,7 +85,27 @@ opts.num_epochs = 20;
 /* how many nets to average in the end for prediction? 
 likely higher = better but slower: */
 opts.ensemble_size = 20; 
- 
+
+var data_length = train_data_a.length;
+var train_data  = new convnetjs.Vol(1,4,data_length,0.0);
+var kntr = 0;
+for(var   i=0;i<data_length;i++) {
+  for(var j=0;j<4;          j++) {
+    train_data.w[kntr] = train_data_a[i][j];
+    kntr += 1;
+  }
+  train_data;
+  train_data_a;
+}
+
+var train_labels = [];
+train_labels_a.forEach(function(label){
+  label;
+  if (label == 'Iris-setosa')
+    train_labels.push(0);
+  }
+);
+
 var magicNet = new convnetjs.MagicNet(train_data, train_labels, opts);
 // example of setting callback for events:
 magicNet.onFinishBatch(finishedBatch); 
@@ -97,6 +118,11 @@ function finishedBatch() {
   // prediction example. xout is Vol of scores
   /* there is also predict_soft(), 
   which returns the full score volume for all labels: */
+
+  var my_test       = [5.11,3.51,1.41,0.21,'Iris-setosa'];
+  var some_test_vol = new convnetjs.Vol(1,1,5);
+
+  some_test_vol.w   = [my_test];
   var predicted_label = magicNet.predict(some_test_vol);
 }
 
