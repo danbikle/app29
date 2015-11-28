@@ -52,7 +52,13 @@
       http://www.google.com/search?q=In+Deep+Learning+what+is+an+Epoch
     </a>
     <br />
+    <a href='http://www.google.com/search?q=In+Macine+Learning+what+is+classifier+ensemble' target='x'>
+    http://www.google.com/search?q=In+Macine+Learning+what+is+classifier+ensemble
+    </a>
     <br />
+    <a href='http://www.google.com/search?q=In+Macine+Learning+what+is+cross+validation' target='x'>
+    http://www.google.com/search?q=In+Macine+Learning+what+is+cross+validation
+    </a>
     <br />
     <img src='/course2.png' />
     <br />
@@ -67,75 +73,79 @@
     <script id='mycode'>
       'hello';
 
-/*
-The MagicNet class performs fully-automatic prediction on your data. 
-You do not worry about anything except providing your data and letting it train for a while. 
-MagicNet tries out many different types of networks.
-It performs n-fold cross-validations of network hyper-parameters across folds of your data.
-It creates a final classifier ensemble by model averaging the best architectures.
-*/
+      /*
+      The MagicNet class performs fully-automatic prediction on your data. 
+      You worry about nothing except providing your data.
+      Also, be patient; let it train for a while. 
+      MagicNet tries out many different types of networks.
+      It performs n-fold cross-validations of network hyper-parameters across folds of your data.
+      It creates a final classifier ensemble by model averaging the best architectures.
+      */
+      
+      // options struct:
+      var opts = {}; 
+      /* what portion of data goes to train, 
+      in train/validation fold splits. Here, 0.7 means 70% */
+      opts.train_ratio = 0.7; 
+      // number of folds to evaluate per candidate:
+      opts.num_folds = 1; 
+      // number of candidates to evaluate in parallel:
+      opts.num_candidates = 50; 
+      // number of epochs to make through data per fold
+      opts.num_epochs = 20; 
+      /* how many nets to average in the end for prediction? 
+      likely higher = better but slower: */
+      opts.ensemble_size = 20; 
+      
+      var train_data  = [];
+      train_data_a.forEach(function(flower){
+        var flower_v = new convnetjs.Vol(1,1,4,0.0);
+        flower_v.w[0] = flower[0];
+        flower_v.w[1] = flower[1];
+        flower_v.w[2] = flower[2];
+        flower_v.w[3] = flower[3];
+        train_data.push(flower_v);
+        train_data;
+      });
+      
+      var train_labels = [];
+      train_labels_a.forEach(function(label){
+        label;
+        if (label == 'Iris-setosa')
+          train_labels.push(0);
+        if (label == 'Iris-versicolor')
+          train_labels.push(1);
+        if (label == 'Iris-virginica')
+          train_labels.push(2);
+        }
+      );
 
-// options struct:
-var opts = {}; 
-/* what portion of data goes to train, 
-in train/validation fold splits. Here, 0.7 means 70% */
-opts.train_ratio = 0.7; 
-// number of folds to evaluate per candidate:
-opts.num_folds = 1; 
-// number of candidates to evaluate in parallel:
-opts.num_candidates = 50; 
-// number of epochs to make through data per fold
-opts.num_epochs = 20; 
-/* how many nets to average in the end for prediction? 
-likely higher = better but slower: */
-opts.ensemble_size = 20; 
+      var lencheck = (train_data.length == train_labels.length);
+      lencheck; // should be true
 
-var train_data  = [];
-train_data_a.forEach(function(flower){
-  var flower_v = new convnetjs.Vol(1,1,4,0.0);
-  flower_v.w[0] = flower[0];
-  flower_v.w[1] = flower[1];
-  flower_v.w[2] = flower[2];
-  flower_v.w[3] = flower[3];
-  train_data.push(flower_v);
-  train_data;
-});
-
-var train_labels = [];
-train_labels_a.forEach(function(label){
-  label;
-  if (label == 'Iris-setosa')
-    train_labels.push(0);
-  if (label == 'Iris-versicolor')
-    train_labels.push(1);
-  if (label == 'Iris-virginica')
-    train_labels.push(2);
-  }
-);
-
-var magicNet = new convnetjs.MagicNet(train_data, train_labels, opts);
-// example of setting callback for events:
-magicNet.onFinishBatch(finishedBatch); 
- 
-/* start training MagicNet. 
-Every call trains all candidates in current batch on one example: */
-setInterval(function(){ magicNet.step(); });
- 
-function finishedBatch() {
-  // prediction example. xout is Vol of scores
-  /* there is also predict_soft(), 
-  which returns the full score volume for all labels: */
-
-  var my_test_x     = [5.11,3.51,1.41,0.21];
-  var my_test_label = 'Iris-setosa'; // is class 0
-  var some_test_vol = new convnetjs.Vol(1,1,4);
-  some_test_vol.w[0] = my_test_x[0]; // is 5.11
-  some_test_vol.w[1] = my_test_x[1];
-  some_test_vol.w[2] = my_test_x[2];
-  some_test_vol.w[3] = my_test_x[3];
-  var predicted_label = magicNet.predict(some_test_vol);
-  predicted_label;
-}
+      var magicNet = new convnetjs.MagicNet(train_data, train_labels, opts);
+      // example of setting callback for events:
+      magicNet.onFinishBatch(finishedBatch); 
+       
+      /* start training MagicNet. 
+      Every call trains all candidates in current batch on one example: */
+      setInterval(function(){ magicNet.step(); });
+       
+      function finishedBatch() {
+        // prediction example. xout is Vol of scores
+        /* there is also predict_soft(), 
+        which returns the full score volume for all labels: */
+      
+        var my_test_x     = [5.11,3.51,1.41,0.21];
+        var my_test_label = 'Iris-setosa'; // is class 0
+        var some_test_vol = new convnetjs.Vol(1,1,4);
+        some_test_vol.w[0] = my_test_x[0]; // is 5.11
+        some_test_vol.w[1] = my_test_x[1];
+        some_test_vol.w[2] = my_test_x[2];
+        some_test_vol.w[3] = my_test_x[3];
+        var predicted_label = magicNet.predict(some_test_vol);
+        predicted_label;
+      }
 
       'bye'; /* In Chrome debugger, place breakpoint at left of this line by clicking there.
                 Then, type CTRL-r to run the debugger. */
