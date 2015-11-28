@@ -52,22 +52,41 @@ https://github.com/karpathy/convnetjs/search?q=MagicNet
     <script id='mycode'>
       'hello';
 
-var opts = {}; // options struct
-opts.train_ratio = 0.7; // what portion of data goes to train, in train/validation fold splits. Here, 70%
-opts.num_folds = 1; // number of folds to evaluate per candidate
-opts.num_candidates = 50; // number of candidates to evaluate in parallel
-opts.num_epochs = 20; // number of epochs to make through data per fold
-opts.ensemble_size = 20; // how many nets to average in the end for prediction? likely higher = better but slower
+/*
+The MagicNet class performs fully-automatic prediction on your data. 
+You do not worry about anything except providing your data and letting it train for a while. 
+MagicNet tries out many different types of networks.
+It performs n-fold cross-validations of network hyper-parameters across folds of your data.
+It creates a final classifier ensemble by model averaging the best architectures.
+*/
+
+// options struct:
+var opts = {}; 
+/* what portion of data goes to train, 
+in train/validation fold splits. Here, 0.7 means 70% */
+opts.train_ratio = 0.7; 
+// number of folds to evaluate per candidate:
+opts.num_folds = 1; 
+// number of candidates to evaluate in parallel:
+opts.num_candidates = 50; 
+// number of epochs to make through data per fold
+opts.num_epochs = 20; 
+/* how many nets to average in the end for prediction? 
+likely higher = better but slower: */
+opts.ensemble_size = 20; 
  
 var magicNet = new convnetjs.MagicNet(train_data, train_labels, opts);
-magicNet.onFinishBatch(finishedBatch); // example of setting callback for events
+// example of setting callback for events:
+magicNet.onFinishBatch(finishedBatch); 
  
-// start training MagicNet. Every call trains all candidates in current batch on one example
+/* start training MagicNet. 
+Every call trains all candidates in current batch on one example: */
 setInterval(function(){ magicNet.step(); }, 0});
  
 function finishedBatch() {
   // prediction example. xout is Vol of scores
-  // there is also predict_soft(), which returns the full score volume for all labels
+  /* there is also predict_soft(), 
+  which returns the full score volume for all labels: */
   var predicted_label = magicNet.predict(some_test_vol);
 }
 
