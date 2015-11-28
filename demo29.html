@@ -148,8 +148,18 @@
 
         my_test_x     = [7.01,3.21,4.71,1.41]
         my_test_label = 'Iris-versicolor'; // is class 1
-        some_test_vol = new convnetjs.Vol(1,1,4);
+        var some_test_vol = new convnetjs.Vol(1,1,4);
         some_test_vol.w[0] = my_test_x[0]; // is 7.01
+        some_test_vol.w[1] = my_test_x[1];
+        some_test_vol.w[2] = my_test_x[2];
+        some_test_vol.w[3] = my_test_x[3];
+        var predicted_label = magicNet.predict(some_test_vol);
+        predicted_label;
+
+        my_test_x     = [5.91,3.01,5.11,1.81]
+        my_test_label = 'Iris-virginica'; // is class 2
+        var some_test_vol = new convnetjs.Vol(1,1,4);
+        some_test_vol.w[0] = my_test_x[0]; // is 5.91
         some_test_vol.w[1] = my_test_x[1];
         some_test_vol.w[2] = my_test_x[2];
         some_test_vol.w[3] = my_test_x[3];
